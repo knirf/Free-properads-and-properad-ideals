@@ -45,6 +45,8 @@ import numpy as np
 %runfile Modules/First_Definitions.sage
 ```
 
+If they use VScode to open notebook files, they probably want change the Scrolling and Text Line Limit settings (sometimes thousands of displayed lines).
+
 - Either they have linux (or WSL) and can probably run the same lines, but I cannot confirm this yet.
 
 ## Details of modules

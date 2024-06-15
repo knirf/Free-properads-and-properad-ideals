@@ -20,16 +20,14 @@ generators_perm = product.graph().all_Graph_Perm() + coproduct.graph().all_Graph
 print("Classic properad without permutations : Prop_classic")
 
 Prop_classic = Free_Properad(generators, 'Prop_classic') 
-for i in range(5):
-    if Prop_classic.generated_weights[-1] < i:
-        Prop_classic.generate_weight(i)
+while Prop_classic.generated_weights[-1]<4:
+        Prop_classic.generate_weight(Prop_classic.generated_weights[-1]+1)
 
 print("Classic properad with permutations : Prop_classic_perm")
 
 Prop_classic_perm = Free_Properad(generators_perm, 'Prop_classic_perm')
-for i in range(4):
-    if Prop_classic_perm.generated_weights[-1] < i:
-        Prop_classic_perm.generate_weight(i)
+while Prop_classic_perm.generated_weights[-1]<4:
+        Prop_classic_perm.generate_weight(Prop_classic_perm.generated_weights[-1]+1)
 
 #Classic graphs in Prop_classic_perm
 
@@ -105,15 +103,15 @@ coassoc = [coassoc123, coassoc132, coassoc213, coassoc231, coassoc312, coassoc32
 
 #Polynomial rings, quotient, and polynomial relations
 
-Ra.<a2, a3, a4, a5> = QQ[]
-Sa = Ra.quotient([a2^2 - a2, a3^2 - a3, a4^2 - a4, a5^2 - a5])
+Ra.<a1, a2, a3, a4> = QQ[]
+Sa = Ra.quotient([a1^2 - a1, a2^2 - a2, a3^2 - a3, a4^2 - a4])
 ring = Ra
 is_sparse = False
 
-rewritting1212 = [[jesus1212, 1], [rightcamel1212, -a2], [leftcamel1212, -a3], [leftfish1212, -a4], [rightfish1212, -a5]]
-rewritting1221 = [[jesus1221, 1], [rightcamel1221, -a2], [leftcamel1221, -a3], [leftfish1221, -a4], [rightfish1221, -a5]]
-rewritting2112 = [[jesus2112, 1], [rightcamel2112, -a2], [leftcamel2112, -a3], [leftfish2112, -a4], [rightfish2112, -a5]]
-rewritting2121 = [[jesus2121, 1], [rightcamel2121, -a2], [leftcamel2121, -a3], [leftfish2121, -a4], [rightfish2121, -a5]]
+rewritting1212 = [[jesus1212, 1], [rightcamel1212, -a1], [leftcamel1212, -a2], [leftfish1212, -a3], [rightfish1212, -a4]]
+rewritting1221 = [[jesus1221, 1], [rightcamel1221, -a1], [leftcamel1221, -a2], [leftfish1221, -a3], [rightfish1221, -a4]]
+rewritting2112 = [[jesus2112, 1], [rightcamel2112, -a1], [leftcamel2112, -a2], [leftfish2112, -a3], [rightfish2112, -a4]]
+rewritting2121 = [[jesus2121, 1], [rightcamel2121, -a1], [leftcamel2121, -a2], [leftfish2121, -a3], [rightfish2121, -a4]]
 rewritting = [rewritting1212, rewritting1221, rewritting2112, rewritting2121]
 elements_init = rewritting + assoc + coassoc
 
@@ -127,28 +125,28 @@ if Ideal_classic_polynomials.generated_steps[-1] == 0:
     
 #Polynomial relations for the Koszul dual
 
-jesus_rightcamel1212 = [[jesus1212, a2], [rightcamel1212, -1]]
-jesus_rightcamel1221 = [[jesus1221, a2], [rightcamel1221, -1]]
-jesus_rightcamel2112 = [[jesus2112, a2], [rightcamel2112, -1]]
-jesus_rightcamel2121 = [[jesus2121, a2], [rightcamel2121, -1]]
+jesus_rightcamel1212 = [[jesus1212, a1], [rightcamel1212, -1]]
+jesus_rightcamel1221 = [[jesus1221, a1], [rightcamel1221, -1]]
+jesus_rightcamel2112 = [[jesus2112, a1], [rightcamel2112, -1]]
+jesus_rightcamel2121 = [[jesus2121, a1], [rightcamel2121, -1]]
 jesus_rightcamel = [jesus_rightcamel1212, jesus_rightcamel1221, jesus_rightcamel2112, jesus_rightcamel2121]
 
-jesus_leftcamel1212 = [[jesus1212, a3], [leftcamel1212, -1]]
-jesus_leftcamel1221 = [[jesus1221, a3], [leftcamel1221, -1]]
-jesus_leftcamel2112 = [[jesus2112, a3], [leftcamel2112, -1]]
-jesus_leftcamel2121 = [[jesus2121, a3], [leftcamel2121, -1]]
+jesus_leftcamel1212 = [[jesus1212, a2], [leftcamel1212, -1]]
+jesus_leftcamel1221 = [[jesus1221, a2], [leftcamel1221, -1]]
+jesus_leftcamel2112 = [[jesus2112, a2], [leftcamel2112, -1]]
+jesus_leftcamel2121 = [[jesus2121, a2], [leftcamel2121, -1]]
 jesus_leftcamel = [jesus_leftcamel1212, jesus_leftcamel1221, jesus_leftcamel2112, jesus_leftcamel2121]
 
-jesus_leftfish1212 = [[jesus1212, a4], [leftfish1212, -1]]
-jesus_leftfish1221 = [[jesus1221, a4], [leftfish1221, -1]]
-jesus_leftfish2112 = [[jesus2112, a4], [leftfish2112, -1]]
-jesus_leftfish2121 = [[jesus2121, a4], [leftfish2121, -1]]
+jesus_leftfish1212 = [[jesus1212, a3], [leftfish1212, -1]]
+jesus_leftfish1221 = [[jesus1221, a3], [leftfish1221, -1]]
+jesus_leftfish2112 = [[jesus2112, a3], [leftfish2112, -1]]
+jesus_leftfish2121 = [[jesus2121, a3], [leftfish2121, -1]]
 jesus_leftfish = [jesus_leftfish1212, jesus_leftfish1221, jesus_leftfish2112, jesus_leftfish2121]
 
-jesus_rightfish1212 = [[jesus1212, a5], [rightfish1212, -1]]
-jesus_rightfish1221 = [[jesus1221, a5], [rightfish1221, -1]]
-jesus_rightfish2112 = [[jesus2112, a5], [rightfish2112, -1]]
-jesus_rightfish2121 = [[jesus2121, a5], [rightfish2121, -1]]
+jesus_rightfish1212 = [[jesus1212, a4], [rightfish1212, -1]]
+jesus_rightfish1221 = [[jesus1221, a4], [rightfish1221, -1]]
+jesus_rightfish2112 = [[jesus2112, a4], [rightfish2112, -1]]
+jesus_rightfish2121 = [[jesus2121, a4], [rightfish2121, -1]]
 jesus_rightfish = [jesus_rightfish1212, jesus_rightfish1221, jesus_rightfish2112, jesus_rightfish2121]
 
 relations_orth = jesus_rightcamel + jesus_leftcamel + jesus_leftfish + jesus_rightfish + assoc + coassoc
@@ -159,4 +157,4 @@ print("Orthogonal ideal with polynomial relations : Ideal_orth_polynomials")
 
 Ideal_orth_polynomials = Ideal_Properad(Prop_classic_perm, relations_orth, 'Ideal_orth_polynomials')
 if Ideal_orth_polynomials.generated_steps[-1] == 0:
-    Ideal_orth_polynomials.generate_next_weight
+    Ideal_orth_polynomials.generate_next_weight()
