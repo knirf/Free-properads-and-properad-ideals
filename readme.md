@@ -22,7 +22,7 @@ The user needs to have Sagemath installed, see https://www.sagemath.org, there a
 
 - Either they have Windows (or maybe Mac) and use binaries (which are not kept up to date), like I do, and can run the following lines in a notebook :
 
-```
+``` python
 import time
 import pickle
 import os
